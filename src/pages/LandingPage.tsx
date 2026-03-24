@@ -4,6 +4,7 @@ import { ArrowRight, Target, BookOpen, BarChart3, Clock, Sparkles, TrendingUp, C
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import ScrollReveal from "@/components/ScrollReveal";
+import { careers } from "@/data/careers";
 import heroImage from "@/assets/hero-illustration.jpg";
 
 const features = [
@@ -82,11 +83,11 @@ const LandingPage = () => {
               <div className="animate-fade-up flex flex-wrap gap-3" style={{ animationDelay: "240ms" }}>
                 <Button variant="hero" size="xl" asChild>
                   <Link to="/explore">
-                    Start Exploring <ArrowRight className="w-5 h-5" />
+                    Find My Dream Career <ArrowRight className="w-5 h-5 ml-2" />
                   </Link>
                 </Button>
                 <Button variant="hero-outline" size="xl" asChild>
-                  <Link to="/dashboard">View Dashboard</Link>
+                  <Link to="/dashboard">Go to Dashboard</Link>
                 </Button>
               </div>
             </div>
@@ -168,6 +169,43 @@ const LandingPage = () => {
                   <span className="font-display text-6xl lg:text-7xl font-bold text-primary/10">{step.number}</span>
                   <h3 className="font-display text-xl font-semibold mt-2 mb-3">{step.title}</h3>
                   <p className="text-muted-foreground leading-relaxed">{step.description}</p>
+                </div>
+              </ScrollReveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Popular Careers */}
+      <section className="py-20 lg:py-28 bg-surface/30 border-y border-border">
+        <div className="container mx-auto px-4 lg:px-8">
+          <ScrollReveal className="text-center max-w-2xl mx-auto mb-16">
+            <h2 className="font-display text-3xl lg:text-4xl font-bold mb-4">
+              Explore Popular Career Paths
+            </h2>
+            <p className="text-muted-foreground text-lg">
+              Jump directly into the most in-demand roles with tailored skill roadmaps.
+            </p>
+          </ScrollReveal>
+
+          <div className="grid md:grid-cols-3 gap-6">
+            {careers.map((career, i) => (
+              <ScrollReveal key={career.id} delay={i * 100} direction="up">
+                <div className="group p-6 rounded-2xl bg-card border border-border card-hover flex flex-col h-full shadow-sm">
+                  <div className="mb-4">
+                    <h3 className="font-display text-2xl font-bold">{career.name}</h3>
+                    <p className="text-muted-foreground text-sm mt-3 leading-relaxed line-clamp-3">
+                      {career.description}
+                    </p>
+                  </div>
+                  <div className="mt-auto pt-5 flex items-center justify-between border-t border-border/60">
+                    <span className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
+                      {career.roadmap.reduce((acc, p) => acc + p.skills.length, 0)} Skills
+                    </span>
+                    <Button variant="ghost" size="sm" className="text-primary hover:text-primary hover:bg-primary/10 -mr-3" asChild>
+                      <Link to={`/roadmap/${career.id}`}>View Roadmap <ArrowRight className="w-4 h-4 ml-1.5" /></Link>
+                    </Button>
+                  </div>
                 </div>
               </ScrollReveal>
             ))}

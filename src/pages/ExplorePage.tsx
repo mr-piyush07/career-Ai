@@ -17,15 +17,15 @@ const categories = [
 ];
 
 const careers = [
-  { id: 1, title: "Full-Stack Developer", category: "tech", icon: Code, demand: "Very High", skills: 12, avgSalary: "$105k", growth: "+25%", description: "Build complete web applications from frontend to backend." },
-  { id: 2, title: "Data Scientist", category: "tech", icon: LineChart, demand: "High", skills: 15, avgSalary: "$120k", growth: "+35%", description: "Extract insights from complex datasets using ML and statistics." },
-  { id: 3, title: "UX Designer", category: "design", icon: Palette, demand: "High", skills: 10, avgSalary: "$95k", growth: "+18%", description: "Create intuitive digital experiences that delight users." },
-  { id: 4, title: "Product Manager", category: "business", icon: Briefcase, demand: "High", skills: 11, avgSalary: "$130k", growth: "+22%", description: "Lead product strategy from concept to market launch." },
-  { id: 5, title: "Healthcare Analyst", category: "health", icon: Stethoscope, demand: "Moderate", skills: 9, avgSalary: "$85k", growth: "+15%", description: "Improve healthcare outcomes through data-driven insights." },
-  { id: 6, title: "EdTech Specialist", category: "education", icon: GraduationCap, demand: "Moderate", skills: 8, avgSalary: "$78k", growth: "+20%", description: "Shape the future of learning with technology and pedagogy." },
-  { id: 7, title: "Motion Designer", category: "creative", icon: Film, demand: "Moderate", skills: 10, avgSalary: "$88k", growth: "+16%", description: "Bring stories to life through animation and visual effects." },
-  { id: 8, title: "DevOps Engineer", category: "tech", icon: Wrench, demand: "Very High", skills: 14, avgSalary: "$115k", growth: "+28%", description: "Automate and optimize software delivery pipelines." },
-  { id: 9, title: "Marketing Strategist", category: "business", icon: LineChart, demand: "High", skills: 11, avgSalary: "$92k", growth: "+12%", description: "Drive growth through data-informed marketing campaigns." },
+  { id: "fullstack", title: "Full-Stack Developer", category: "tech", icon: Code, demand: "Very High", skills: 12, avgSalary: "$105k", growth: "+25%", description: "Build complete web applications from frontend to backend." },
+  { id: "data-scientist", title: "Data Scientist", category: "tech", icon: LineChart, demand: "High", skills: 15, avgSalary: "$120k", growth: "+35%", description: "Extract insights from complex datasets using ML and statistics." },
+  { id: "frontend", title: "Frontend Developer", category: "tech", icon: Palette, demand: "High", skills: 10, avgSalary: "$95k", growth: "+18%", description: "Create intuitive digital experiences that delight users." },
+  { id: "backend", title: "Backend Developer", category: "tech", icon: Code, demand: "Very High", skills: 14, avgSalary: "$115k", growth: "+28%", description: "Architect secure, scalable, and high-performance server systems." },
+  { id: "product-manager", title: "Product Manager", category: "business", icon: Briefcase, demand: "High", skills: 11, avgSalary: "$130k", growth: "+22%", description: "Lead product strategy from concept to market launch." },
+  { id: "health-analyst", title: "Healthcare Analyst", category: "health", icon: Stethoscope, demand: "Moderate", skills: 9, avgSalary: "$85k", growth: "+15%", description: "Improve healthcare outcomes through data-driven insights." },
+  { id: "edtech", title: "EdTech Specialist", category: "education", icon: GraduationCap, demand: "Moderate", skills: 8, avgSalary: "$78k", growth: "+20%", description: "Shape the future of learning with technology and pedagogy." },
+  { id: "motion-designer", title: "Motion Designer", category: "creative", icon: Film, demand: "Moderate", skills: 10, avgSalary: "$88k", growth: "+16%", description: "Bring stories to life through animation and visual effects." },
+  { id: "marketing", title: "Marketing Strategist", category: "business", icon: LineChart, demand: "High", skills: 11, avgSalary: "$92k", growth: "+12%", description: "Drive growth through data-informed marketing campaigns." },
 ];
 
 const demandColor = (d: string) => {
@@ -113,7 +113,7 @@ const ExplorePage = () => {
                     <span className="text-primary font-medium">{career.growth}</span>
                   </div>
                   <Button variant="outline" size="sm" className="w-full group/btn" asChild>
-                    <Link to="/roadmap">
+                    <Link to={`/roadmap/${career.id}`}>
                       View Roadmap <ArrowRight className="w-4 h-4 group-hover/btn:translate-x-0.5 transition-transform" />
                     </Link>
                   </Button>

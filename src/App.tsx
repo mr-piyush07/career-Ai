@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes, Navigate } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -7,6 +7,7 @@ import Index from "./pages/Index.tsx";
 import ExplorePage from "./pages/ExplorePage.tsx";
 import RoadmapPage from "./pages/RoadmapPage.tsx";
 import DashboardPage from "./pages/DashboardPage.tsx";
+import ResourcesPage from "./pages/ResourcesPage.tsx";
 import NotFound from "./pages/NotFound.tsx";
 
 const queryClient = new QueryClient();
@@ -20,7 +21,9 @@ const App = () => (
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/explore" element={<ExplorePage />} />
-          <Route path="/roadmap" element={<RoadmapPage />} />
+          <Route path="/roadmap" element={<Navigate to="/explore" replace />} />
+          <Route path="/roadmap/:careerId" element={<RoadmapPage />} />
+          <Route path="/resources/:careerId" element={<ResourcesPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
